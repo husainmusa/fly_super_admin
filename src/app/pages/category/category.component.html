@@ -41,6 +41,7 @@
                                 <th>Name</th>
                                 <th>Status</th>
                                 <th>Action</th>
+                                <th>Show in app</th>
                                 <th>Delete</th>
                             </tr>
                         </thead>
@@ -80,6 +81,9 @@
                                 </td>
                                 <td><button type="button" (click)="view(item)"
                                         class="btn btn-success btn-round btn-outline-success">View</button>
+                                </td>
+                                <td><button type="button" [className]="getClass(item.showInApp)"
+                                    (click)="hideShow(item)">{{item.showInApp === '1' ? 'Yes':'No'}}</button>
                                 </td>
                                 <td><button type="button" (click)="deleteCategory(item)"
                                     class="btn btn-danger btn-round btn-outline-danger">Delete</button>

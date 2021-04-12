@@ -214,4 +214,42 @@ export class CategoryComponent implements OnInit {
       }
     });
   }
+
+  /***** manage visiblity in app******/
+  hideShow(item) {
+    const text = item.showInApp === '1' ? 'hide' : 'show';
+    Swal.fire({
+      title: this.api.translate('Are you sure?'),
+      text: this.api.translate('To ') + text + this.api.translate('this category in user application'),
+      icon: 'question',
+      showConfirmButton: true,
+      confirmButtonText: this.api.translate('Yes'),
+      showCancelButton: true,
+      cancelButtonText: this.api.translate('Cancle'),
+      backdrop: false,
+      background: 'white'
+    }).then((data) => {
+      if (data && data.value) {
+        console.log('update it');
+        const query = item.showInApp === '1' ? '0' : '1';
+        const param = {
+          id: item.id,
+          showInApp: query
+        };
+        this.spinner.show();
+        this.api.post('categories/editList', param).then((datas) => {
+          this.spinner.hide();
+          this.getCategory();
+        }, error => {
+          this.spinner.hide();
+          this.error(this.api.translate('Something went wrong'));
+          console.log(error);
+        }).catch(error => {
+          this.spinner.hide();
+          console.log(error);
+          this.error(this.api.translate('Something went wrong'));
+        });
+      }
+    });
+  }
 }

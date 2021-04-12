@@ -41,6 +41,7 @@ export class AppWebComponent implements OnInit {
   shipping_price_for3: any;
   shipping_price_after3: any;
   max_price_for_cod:any;
+  order_traking_email:any
   // delivery_range: any;
   constructor(
     private api: ApisService,
@@ -79,6 +80,7 @@ export class AppWebComponent implements OnInit {
           this.state = info.state;
           this.tax = info.tax;
           this.zip = info.zip;
+          this.order_traking_email = info.order_traking_email;
         }
       } else {
         this.haveSave = false;
@@ -137,7 +139,8 @@ export class AppWebComponent implements OnInit {
     if (!this.mobile || this.mobile === '' || !this.email || this.email === '' || !this.address || this.address === '' ||
       !this.city || this.city === '' || !this.state || this.state === '' || !this.zip || this.zip === '' || !this.country ||
       this.country === '' || !this.min || this.min === '' || !this.free || this.free === ''  ||
-      !this.shipping_price_after3 || this.shipping_price_for3 === '' || !this.max_price_for_cod || this.max_price_for_cod === '') {
+      !this.shipping_price_after3 || this.shipping_price_for3 === '' || !this.max_price_for_cod || this.max_price_for_cod === ''
+      || !this.order_traking_email || this.order_traking_email === '') {
       console.log('not ok');
       this.error('All Fields are required');
       return false;
@@ -159,7 +162,8 @@ export class AppWebComponent implements OnInit {
         shipping_price_for3: this.shipping_price_for3,
         max_price_for_cod:this.max_price_for_cod,
         // delivery_range: this.delivery_range,
-        id: this.id
+        id: this.id,
+        order_traking_email :this.order_traking_email
       };
 
       console.log('param', param);
@@ -206,6 +210,7 @@ export class AppWebComponent implements OnInit {
         shipping_price_after3: this.shipping_price_after3,
         shipping_price_for3: this.shipping_price_for3,
         max_price_for_cod:this.max_price_for_cod,
+        order_traking_email:this.order_traking_email
       };
 
       console.log('param', param);

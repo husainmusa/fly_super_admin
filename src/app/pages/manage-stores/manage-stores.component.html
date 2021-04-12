@@ -86,10 +86,10 @@
                                     </div>
                                 </td>                                
                                 <td> 
-                                    <input  [(ngModel)]="monday_open_time" [disabled]="monday == true ? false:true" type="time" class="form-control" placeholder="Opening Time"> 
+                                    <input  [(ngModel)]="monday_open_time" [disabled]="monday == true ? false:true" type="time"  class="form-control" placeholder="Opening Time"> 
                                 </td>
                                 <td>
-                                    <input  [(ngModel)]="monday_close_time" [disabled]="monday == true ? false:true"  type="time" class="form-control" placeholder="Closing Time">
+                                    <input  [(ngModel)]="monday_close_time" [disabled]="monday == true ? false:true"  type="time" [min]="monday_open_time"  max="23:59" (change)="checkCloseTime($event ,'monday_close_time')" class="form-control" placeholder="Closing Time">
                                 </td>
                             </tr>
                             <tr>
@@ -103,7 +103,7 @@
                                     <input  [(ngModel)]="tuesday_open_time" [disabled]="tuesday == true ? false:true" type="time" class="form-control" placeholder="Opening Time"> 
                                 </td>
                                 <td>
-                                    <input  [(ngModel)]="tuesday_close_time" [disabled]="tuesday == true ? false:true" type="time" class="form-control" placeholder="Closing Time">
+                                    <input  [(ngModel)]="tuesday_close_time" [disabled]="tuesday == true ? false:true" type="time" [min]="tuesday_open_time"  max="23:59" (change)="checkCloseTime($event ,'tuesday_close_time')" class="form-control" placeholder="Closing Time">
                                 </td>
                             </tr>
                             <tr>
@@ -117,7 +117,7 @@
                                     <input  [(ngModel)]="wednesday_open_time" [disabled]="wednesday == true ? false:true" type="time" class="form-control" placeholder="Opening Time"> 
                                 </td>
                                 <td>
-                                    <input  [(ngModel)]="wednesday_close_time" [disabled]="wednesday == true ? false:true" type="time" class="form-control" placeholder="Closing Time">
+                                    <input  [(ngModel)]="wednesday_close_time" [disabled]="wednesday == true ? false:true" type="time" [min]="wednesday_open_time"  max="23:59" (change)="checkCloseTime($event ,'wednesday_close_time')" class="form-control" placeholder="Closing Time">
                                 </td>
                             </tr>
                             <tr>
@@ -131,7 +131,7 @@
                                     <input  [(ngModel)]="thursday_open_time" [disabled]="thursday == true ? false:true" type="time" class="form-control" placeholder="Opening Time"> 
                                 </td>
                                 <td>
-                                    <input  [(ngModel)]="thursday_close_time"  [disabled]="thursday == true ? false:true" type="time" class="form-control" placeholder="Closing Time">
+                                    <input  [(ngModel)]="thursday_close_time"  [disabled]="thursday == true ? false:true" type="time" [min]="thursday_open_time"  max="23:59" (change)="checkCloseTime($event ,'thursday_close_time')" class="form-control" placeholder="Closing Time">
                                 </td>
                             </tr>
                             <tr>
@@ -145,7 +145,7 @@
                                     <input  [(ngModel)]="friday_open_time"   [disabled]="friday == true ? false:true" type="time" class="form-control" placeholder="Opening Time"> 
                                 </td>
                                 <td>
-                                    <input  [(ngModel)]="friday_close_time"   [disabled]="friday == true ? false:true" type="time" class="form-control" placeholder="Closing Time">
+                                    <input  [(ngModel)]="friday_close_time"   [disabled]="friday == true ? false:true" type="time" [min]="friday_open_time"  max="23:59" (change)="checkCloseTime($event ,'friday_close_time')" class="form-control" placeholder="Closing Time">
                                 </td>
                             </tr>
                             <tr>
@@ -159,7 +159,7 @@
                                     <input  [(ngModel)]="saturday_open_time"  [disabled]="saturday == true ? false:true" type="time" class="form-control" placeholder="Opening Time"> 
                                 </td>
                                 <td>
-                                    <input  [(ngModel)]="saturday_close_time"  [disabled]="saturday == true ? false:true" type="time" class="form-control" placeholder="Closing Time">
+                                    <input  [(ngModel)]="saturday_close_time"  [disabled]="saturday == true ? false:true" type="time" [min]="saturday_open_time"  max="23:59" (change)="checkCloseTime($event ,'saturday_close_time')" class="form-control" placeholder="Closing Time">
                                 </td>
                             </tr>
                             <tr>
@@ -173,7 +173,7 @@
                                     <input   [(ngModel)]="sunday_open_time"  [disabled]="sunday == true ? false:true" type="time"  class="form-control" placeholder="Opening Time"> 
                                 </td>
                                 <td>
-                                    <input  [(ngModel)]="sunday_close_time"  [disabled]="sunday == true ? false:true" type="time" class="form-control" placeholder="Closing Time">
+                                    <input  [(ngModel)]="sunday_close_time"  [disabled]="sunday == true ? false:true" type="time" [min]="sunday_open_time"  max="23:59" (change)="checkCloseTime($event ,'sunday_close_time')" class="form-control" placeholder="Closing Time">
                                 </td>
                             </tr>
                         </tbody>

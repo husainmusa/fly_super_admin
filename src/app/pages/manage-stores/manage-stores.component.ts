@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ChangeDetectorRef ,NgZone} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { GooglePlaceDirective } from 'ngx-google-places-autocomplete';
@@ -89,9 +89,11 @@ export class ManageStoresComponent implements OnInit {
     private spinner: NgxSpinnerService,
     private navCtrl: Location,
     private chMod: ChangeDetectorRef,
-    public util: UtilService
+    public util: UtilService,
+    private ngZone: NgZone
   ) {
     this.getCity();
+
   }
 
   ngOnInit() {
@@ -738,6 +740,24 @@ export class ManageStoresComponent implements OnInit {
 
   setDays(){
 
+
+  }
+
+  checkCloseTime(event,openTime){
+    console.log('event:checkCloseTime',openTime)
+    this.ngZone.run(() => {
+      if(!event.target.validity.valid){
+        setTimeout(()=>{
+          this.error(this.api.translate(event.target.validationMessage));
+          event.target.value = '23:59';
+          
+          this[openTime] = event.target.value;
+          console.log('monday_close_time',this.monday_close_time)
+        },500)
+         
+      }
+    });
+    
 
   }
 }
